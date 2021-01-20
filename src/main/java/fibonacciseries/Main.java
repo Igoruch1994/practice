@@ -11,16 +11,16 @@ public class Main {
     final static List<Integer> results = new ArrayList<>();
 
     public static void main(String[] args) {
-        getFibonacciNumberUsingListIteration();
-        getFibonacciNumberUsingRecursion();
+        System.out.println("Enter number to print: ");
+        final int fibonacciCount = new Scanner(System.in).nextInt();
+        getFibonacciNumberUsingListIteration(fibonacciCount);
+        getFibonacciNumberUsingRecursion(fibonacciCount);
     }
 
     // ----------------------------------------------------------------------------------
 
-    private static void getFibonacciNumberUsingRecursion() {
-        System.out.println("Enter number to print: ");
-        final int fibonacciCount = new Scanner(System.in).nextInt();
-        for (int number = 1; number <= fibonacciCount; number++) {
+    private static void getFibonacciNumberUsingRecursion(final int fibonacciCount) {
+        for (int number = ONE; number <= fibonacciCount; number++) {
             results.add(getFibonacciWithRecursion(number));
         }
         System.out.println(results);
@@ -36,9 +36,7 @@ public class Main {
 
     // ----------------------------------------------------------------------------------
 
-    private static void getFibonacciNumberUsingListIteration() {
-        System.out.println("Enter number to print: ");
-        final int fibonacciCount = new Scanner(System.in).nextInt();
+    private static void getFibonacciNumberUsingListIteration(final int fibonacciCount) {
         int currentValue = ONE;
         while (results.size() != fibonacciCount) {
             currentValue = getNextFibonacciNumber(currentValue);
