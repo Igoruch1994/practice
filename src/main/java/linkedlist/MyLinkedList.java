@@ -2,12 +2,14 @@ package linkedlist;
 
 import java.util.Objects;
 
+import static java.util.Objects.isNull;
+
 public class MyLinkedList<T> {
 
     private Node<T> head;
 
     public void add(final T record) {
-        if (Objects.isNull(head)) {
+        if (isNull(head)) {
             head = new Node<>();
             head.setData(record);
             return;
@@ -23,7 +25,7 @@ public class MyLinkedList<T> {
     }
 
     public void remove(final T record) {
-        if (Objects.isNull(head)) {
+        if (isNull(head)) {
             return;
         }
         Node<T> node = head;
@@ -40,9 +42,25 @@ public class MyLinkedList<T> {
         }
     }
 
+    public void reverseWithRecursion() {
+        reverse(head);
+    }
+
+    private void reverse(final Node<T> node) {
+        if (isNull(node)) {
+            return;
+        }
+        final Node<T> next = node.getNext();
+        final Node<T> previous = node.getPrevious();
+        node.setPrevious(next);
+        node.setNext(previous);
+        head = node;
+        reverse(next);
+    }
+
     public void reverse() {
         Node<T> node = head;
-        if (Objects.isNull(head.getNext())) {
+        if (isNull(head.getNext())) {
             return;
         }
         while (Objects.nonNull(node.getNext())) {

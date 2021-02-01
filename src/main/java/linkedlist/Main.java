@@ -8,7 +8,8 @@ public class Main {
         myLinkedList.add("Hello one more time");
         myLinkedList.add("Hello one more time2");
         myLinkedList.add("Hello last time");
-        myLinkedList.reverse();
+        //myLinkedList.reverse();
+        myLinkedList.reverseWithRecursion();
         myLinkedList.remove("Hello one more time2");
         myLinkedList.print();
     }
