@@ -50,10 +50,7 @@ public class MyLinkedList<T> {
         if (isNull(node)) {
             return;
         }
-        final Node<T> next = node.getNext();
-        final Node<T> previous = node.getPrevious();
-        node.setPrevious(next);
-        node.setNext(previous);
+        final Node<T> next = changeNodeReferences((Node<T>) node);
         head = node;
         reverse(next);
     }
@@ -64,15 +61,20 @@ public class MyLinkedList<T> {
             return;
         }
         while (Objects.nonNull(node.getNext())) {
-            final Node<T> next = node.getNext();
-            final Node<T> previous = node.getPrevious();
-            node.setPrevious(next);
-            node.setNext(previous);
+            final Node<T> next = changeNodeReferences(node);
             node = next;
         }
         node.setNext(node.getPrevious());
         node.setPrevious(null);
         head = node;
+    }
+
+    private Node<T> changeNodeReferences(final Node<T> node) {
+        final Node<T> next = node.getNext();
+        final Node<T> previous = node.getPrevious();
+        node.setPrevious(next);
+        node.setNext(previous);
+        return next;
     }
 
     public void print() {
@@ -81,6 +83,7 @@ public class MyLinkedList<T> {
             System.out.println(node.getData());
             node = node.getNext();
         }
+
     }
 
 }
