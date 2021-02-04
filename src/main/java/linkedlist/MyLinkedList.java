@@ -83,7 +83,6 @@ public class MyLinkedList<T> {
             System.out.println(node.getData());
             node = node.getNext();
         }
-
     }
 
 }
